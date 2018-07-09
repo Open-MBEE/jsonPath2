@@ -535,17 +535,6 @@ public class Utils {
     }
   }
   
-  /// Protected methods
-  
-  /**
-   * Reads a resource, like those included in the resources folder, out as a String.
-   * @param resourceName the fully qualified file name, with respect to the included resources
-   * @return A String containing the contents of the file
-   */
-  protected static String readResource(String resourceName) {
-    return streamToString( Utils.class.getResourceAsStream(resourceName) );
-  }
-  
   /**
    * Prints and returns its argument.
    * Useful for inspecting calculations in place.

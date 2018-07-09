@@ -33,7 +33,7 @@ import static gov.nasa.jpl.jsonPath2.Utils.*;
  * @author David K. Legg
  *
  */
-class Path implements Comparable<Path> {
+public class Path implements Comparable<Path> {
   /// Private constants
   
   private static final List<String> HERE_TAGS      = Arrays.asList("HERE", "HERE:", "~"); // declare the canonical form first, by convention
