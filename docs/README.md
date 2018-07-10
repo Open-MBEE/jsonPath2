@@ -4,11 +4,13 @@ A query language for JSON documents.
 
 ## Installation
 
-Clone this repository. Then, from the root directory for the project, execute
+Clone this repository, preferably into `~/git/jsonPath2` (other locations may require adjustments). Then, from the root directory for the project, execute
 
- * `mvn update` - to get dependencies
  * `grammars/make.sh` - to build the Antlr Lexer/Parser
- * `scripts/pathquery` - to compile and test
+ * `mvn package` - to compile
+ * `scripts/pathquery` - to test
+
+If you see a message prompting you for an input path, your install was successful.
 
 The most likely source of errors are dependency failures. Make sure that Antlr4 is installed on your system, and that the Maven dependencies could be fetched.
 

@@ -5,19 +5,73 @@
   <version>1.0.1-SNAPSHOT</version>
   <name>JsonPath2</name>
   <description>A query language for JSON documents</description>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
   <build>
+    <sourceDirectory>src/gov/nasa/jpl/jsonPath2</sourceDirectory>
 	  <plugins>
-	      <plugin>
-	        <groupId>org.apache.maven.plugins</groupId>
-	        <artifactId>maven-compiler-plugin</artifactId>
-	        <version>3.7.0</version>
-	        <configuration>
-	          <source>1.8</source>
-	          <target>1.8</target>
-	        </configuration>
-	      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.7.0</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+      <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <executions>
+              <execution>
+                  <phase>package</phase>
+                  <goals>
+                      <goal>single</goal>
+                  </goals>
+                  <configuration>
+                      <archive>
+                      <manifest>
+                          <mainClass>
+                              gov.nasa.jpl.jsonPath2.Path
+                          </mainClass>
+                      </manifest>
+                      </archive>
+                      <descriptorRefs>
+                          <descriptorRef>jar-with-dependencies</descriptorRef>
+                      </descriptorRefs>
+                  </configuration>
+              </execution>
+          </executions>
+      </plugin>
+      <plugin>
+         <groupId>org.apache.maven.plugins</groupId>
+         <artifactId>maven-install-plugin</artifactId>
+         <version>2.5.1</version>
+         <configuration>
+            <groupId>jpl.nasa.gov.mbee</groupId>
+            <artifactId>jsonPath2</artifactId>
+            <version>${project.version}</version>
+            <packaging>jar</packaging>
+            <file>${basedir}/target/jsonPath2-${project.version}.jar</file>
+            <generatePom>true</generatePom>
+         </configuration>
+         <executions>
+            <execution>
+               <id>install-jar-lib</id>
+               <goals>
+                  <goal>install-file</goal>
+               </goals>
+               <phase>package</phase>
+            </execution>
+         </executions>
+      </plugin>
+
 	  </plugins>
   </build>
+
   <dependencies>
   	<dependency>
   		<groupId>org.antlr</groupId>
