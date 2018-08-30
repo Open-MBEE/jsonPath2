@@ -6,7 +6,6 @@ A query language for JSON documents.
 
 Clone this repository, preferably into `~/git/jsonPath2` (other locations may require adjustments). Then, from the root directory for the project, execute
 
- * `grammars/make.sh` - to build the Antlr Lexer/Parser
  * `mvn package` - to compile
  * `scripts/pathquery` - to test
 
@@ -14,7 +13,9 @@ If you see a message prompting you for an input path, your install was successfu
 
 The most likely source of errors are dependency failures. Make sure that Antlr4 is installed on your system, and that the Maven dependencies could be fetched.
 
-## Description and Usage
+Also note that when you run `mvn package`, this will install jsonPath2 as a local artifact, which Maven can then use on that machine as a dependency for other projects.
+
+## Description
 
 This language is closely related to [JsonPath](http://goessner.net/articles/JsonPath/), but is **not** compatible with it. For a complete description of the grammar, see the Antlr [Grammar]. Briefly, a Path is a tree structure, with nodes called *elements* and branches called, well, *branches*. Syntactically, a path has one of three forms:
 
@@ -89,7 +90,7 @@ DOC.elements[*]
 
 ## Command-Line Usage
 
-To invoke JsonPath2 from the command line, run the [pathquery](../scripts/pathquery) script. It can be run in either one-off or interactive mode. To run in one-off mode, run:
+To invoke JsonPath2 from the command line, run the [pathquery](../scripts/pathquery) script, `scripts/pathquery`. It can be run in either one-off or interactive mode. To run in one-off mode, run:
 ```
 pathquery -path .your.path -file path/to/file.json
 ```

@@ -1058,14 +1058,15 @@ body .markdown-body
 </style><title>README</title></head><body><article class="markdown-body"><h1 id="jsonpath2">JsonPath2<a class="headerlink" href="#jsonpath2" title="Permanent link"></a></h1>
 <p>A query language for JSON documents.</p>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link"></a></h2>
-<p>Clone this repository. Then, from the root directory for the project, execute</p>
+<p>Clone this repository, preferably into <code>~/git/jsonPath2</code> (other locations may require adjustments). Then, from the root directory for the project, execute</p>
 <ul>
-<li><code>mvn update</code> - to get dependencies</li>
-<li><code>grammars/make.sh</code> - to build the Antlr Lexer/Parser</li>
-<li><code>scripts/pathquery</code> - to compile and test</li>
+<li><code>mvn package</code> - to compile</li>
+<li><code>scripts/pathquery</code> - to test</li>
 </ul>
+<p>If you see a message prompting you for an input path, your install was successful.</p>
 <p>The most likely source of errors are dependency failures. Make sure that Antlr4 is installed on your system, and that the Maven dependencies could be fetched.</p>
-<h2 id="description-and-usage">Description and Usage<a class="headerlink" href="#description-and-usage" title="Permanent link"></a></h2>
+<p>Also note that when you run <code>mvn package</code>, this will install jsonPath2 as a local artifact, which Maven can then use on that machine as a dependency for other projects.</p>
+<h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link"></a></h2>
 <p>This language is closely related to <a href="http://goessner.net/articles/JsonPath/">JsonPath</a>, but is <strong>not</strong> compatible with it. For a complete description of the grammar, see the Antlr <a href="/Users/dlegg/git/jsonPath2/grammars/JsonPath2Parser.g4">Grammar</a>. Briefly, a Path is a tree structure, with nodes called <em>elements</em> and branches called, well, <em>branches</em>. Syntactically, a path has one of three forms:</p>
 <ul>
 <li>Leaf: <code>.element</code></li>
@@ -1146,7 +1147,7 @@ body .markdown-body
     .name
 </pre></div></p>
 <h2 id="command-line-usage">Command-Line Usage<a class="headerlink" href="#command-line-usage" title="Permanent link"></a></h2>
-<p>To invoke JsonPath2 from the command line, run the <a href="/Users/dlegg/git/jsonPath2/scripts/pathquery">pathquery</a> script. It can be run in either one-off or interactive mode. To run in one-off mode, run:
+<p>To invoke JsonPath2 from the command line, run the <a href="/Users/dlegg/git/jsonPath2/scripts/pathquery">pathquery</a> script, <code>scripts/pathquery</code>. It can be run in either one-off or interactive mode. To run in one-off mode, run:
 <div class="codehilite"><pre>pathquery -path .your.path -file path/to/file.json
 </pre></div>
 This will execute <code>.your.path</code> against the JSON model in <code>path/to/file.json</code>, and report the results. More commonly, however, this script is run in interactive mode. To do so, simply omit the <code>-path</code> option, like this:
